@@ -30,6 +30,7 @@ build/Release
 node_modules
 
 .env
+env.js
 .DS_Store
 *.swp
 coverage*
