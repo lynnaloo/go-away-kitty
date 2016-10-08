@@ -12,24 +12,26 @@ module.exports.sendText = (event, context, cb) => {
   require('env.js') // this is hacky way to get envs in here
 
   if (!event.Records) {
+    console.log(`event: ${event}`);
     return cb(null, 'No SNS message found.');
   }
 
   const message = event.Records[0].Sns.Message;
-  console.log('Message from SNS:', message);
+  const motionData = JSON.parse(message);
 
   const accountSid = process.env.TWILIO_ACCOUNT_SID;
   const authToken = process.env.TWILIO_AUTH_TOKEN;
   const toNumber = process.env.TO_NUMBER;
   const twilioNumber = process.env.TWILIO_FROM_NUMBER;
-
   const client = require('twilio')(accountSid, authToken);
+
+  console.log(`message from SNS: ${message}`);
 
   //Send an SMS text message
   client.sendMessage({
       to: toNumber,
       from: twilioNumber,
-      body: `A kitty was just seen at ${message.timestamp}`
+      body: `A kitty was just seen at ${motionData.timestamp}`
   }, function (err, responseData) {
     if (err) {
       // throw an error
