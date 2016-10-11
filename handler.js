@@ -1,16 +1,37 @@
 'use strict';
 
+const moment = require('moment-timezone');
+const AWS = require('aws-sdk');
+const sns = new AWS.SNS();
+require('env.js')
+
 module.exports.hello = (event, context, cb) => {
   cb(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
 };
 
-module.exports.processImage = (event, context, cb) => {
-  cb(null, { message: 'Image processed!', event });
+/**
+    Send Kitty detection data to the Amazon SNS Topic
+ */
+module.exports.reportKitty = (event, context, cb) => {
+  const now = moment().tz('America/New_York').format('LLL');
+
+  sns.publish({
+    Message: JSON.stringify({ 'motion': true, 'timestamp': now}),
+    TopicArn: process.env.AWS_SNS_TOPIC
+  }, function (err, data) {
+    if (err) {
+      console.log(`Error publishing to topic ${process.env.AWS_SNS_TOPIC}: err.stack`);
+      return cb(err, null);
+    }
+    console.log(data);
+    return cb(null, 'Message published');
+  });
 };
 
+/**
+    Send a text when a message is sent to the Amazon SNS Topic
+ */
 module.exports.sendText = (event, context, cb) => {
-  require('env.js') // this is hacky way to get envs in here
-
   if (!event.Records) {
     console.log(`event: ${event}`);
     return cb(null, 'No SNS message found.');

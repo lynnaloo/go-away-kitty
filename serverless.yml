@@ -35,6 +35,8 @@ functions:
     events:
       - sns: kitty-detection
       - displayName: Kitty motion detected
+  reportKitty:
+    handler: handler.reportKitty
 
 #    you can add any of the following events
 #    events:

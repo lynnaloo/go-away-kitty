@@ -6,6 +6,7 @@
   "dependencies": {
     "eslint": "^3.7.1",
     "eslint-config-eta": "^0.0.6",
+    "moment-timezone": "^0.5.6",
     "twilio": "^2.11.0"
   },
   "devDependencies": {
