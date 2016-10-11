@@ -2,22 +2,6 @@
 
 > :feet: :crying_cat_face: Serverless architecture for dealing with kitty-detection data
 
-## Usage
-
-Let's do X:
-
-```js
-var goAwayKitty = require('go-away-kitty')
-
-console.log('hello warld')
-```
-
-This will output
-
-```
-hello warld
-```
-
 ## Install
 
 With [node](https://nodejs.org/) installed, install the Serverless Architecture:
@@ -48,9 +32,9 @@ Deploy Lambda Functions
 $ sls deploy -v
 ```
 
-## Acknowledgments
-
 ## See Also
+
+*   [Serverless Framwork](http://www.serverless.com)
 
 ## License
 
