@@ -2,8 +2,29 @@
   "name": "go-away-kitty",
   "version": "0.0.1",
   "description": ":feet: :crying_cat_face: Serverless architecture to deal with kitty-detection data",
+  "keywords": [
+    "serverless",
+    "lambda",
+    "twillio",
+    "imagemagick"
+  ],
+  "homepage": "https://github.com/lynnaloo/go-away-kitty#readme",
+  "bugs": {
+    "url": "https://github.com/lynnaloo/go-away-kitty/issues"
+  },
+  "license": "MIT",
+  "author": "Linda Nichols <lynnaloo@gmail.com>",
   "main": "handler.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lynnaloo/go-away-kitty.git"
+  },
+  "scripts": {
+    "test": "mocha -c",
+    "lint": "eslint . --ext .js"
+  },
   "dependencies": {
+    "aws-sdk": "^2.7.21",
     "eslint": "^3.7.1",
     "eslint-config-eta": "^0.0.6",
     "moment-timezone": "^0.5.6",
@@ -11,25 +32,7 @@
   },
   "devDependencies": {
     "eslint": "^3.7.1",
-    "eslint-config-eta": "0.0.6"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lynnaloo/go-away-kitty.git"
-  },
-  "keywords": [
-    "serverless",
-    "lambda",
-    "twillio",
-    "imagemagick"
-  ],
-  "author": "Linda Nichols <lynnaloo@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/lynnaloo/go-away-kitty/issues"
-  },
-  "homepage": "https://github.com/lynnaloo/go-away-kitty#readme"
+    "eslint-config-eta": "0.0.6",
+    "mocha": "^3.2.0"
+  }
 }

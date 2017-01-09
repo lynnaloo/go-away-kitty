@@ -1,0 +1,10 @@
+{
+	"Records": [{
+		"Sns": {
+			"Message": {
+				"motion": true,
+				"timestamp": "2016-10-08T02:03:14+00:00"
+			}
+		}
+	}]
+}

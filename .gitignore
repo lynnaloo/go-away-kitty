@@ -31,6 +31,8 @@ node_modules
 
 .env
 env.js
+env.json
+*_env.json
 .DS_Store
 *.swp
 coverage*

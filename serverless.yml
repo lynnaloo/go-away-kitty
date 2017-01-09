@@ -1,3 +1,5 @@
+# go-away-kitty
+
 service: go-away-kitty
 
 provider:
@@ -5,8 +7,8 @@ provider:
   runtime: nodejs4.3
 
 # you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
+  stage: dev
+  region: us-east-1
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -23,20 +25,31 @@ provider:
 #          - - "arn:aws:s3:::"
 #            - "Ref" : "ServerlessDeploymentBucket"
 
+# you can define service wide environment variables here
+  environment:
+    AWS_SNS_TOPIC: ${file(./env.json):AWS_SNS_TOPIC}
+
 functions:
   hello:
-    handler: handler.hello
+    handler: handlers/greeting.hello
     events:
       - http:
         path: greet
         method: get
+
   sendText:
-    handler: handler.sendText
+    handler: handlers/textAlert.sendText
     events:
       - sns: kitty-detection
       - displayName: Kitty motion detected
+    environment:
+      TWILIO_AUTH_TOKEN: ${file(./env.json):TWILIO_AUTH_TOKEN}
+      TWILIO_ACCOUNT_SID: ${file(./env.json):TWILIO_ACCOUNT_SID}
+      TO_NUMBER: ${file(./env.json):TO_NUMBER}
+      TWILIO_FROM_NUMBER: ${file(./env.json):TWILIO_FROM_NUMBER}
+
   reportKitty:
-    handler: handler.reportKitty
+    handler: handlers/reportKitty.reportKitty
 
 #    you can add any of the following events
 #    events:
