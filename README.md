@@ -1,7 +1,8 @@
 # go-away-kitty
 
-> :feet: :crying_cat_face: Serverless functions for dealing with kitty detections
-> Kitty sightings with images can now be processed with AWS Rekognition
+> :feet: :crying_cat_face: Serverless functions for dealing with kitty detections.
+
+> Kitty sightings with images can now be processed with AWS Rekognition!
 
 ## Install
 
