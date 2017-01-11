@@ -1,5 +1,6 @@
 'use strict';
 
 module.exports.hello = (event, context, cb) => {
-  cb(null, { message: 'Welcome to the Go Away Kitty Service!', event.body });
+  const data = JSON.parse(event.body);
+  cb(null, { message: 'Welcome to the Go Away Kitty Service!', data: data });
 };
