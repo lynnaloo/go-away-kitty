@@ -1,0 +1,6 @@
+{
+  "body": {
+    "bucket": "kitty-detections",
+    "imageName": "cat.jpg"
+  }
+}

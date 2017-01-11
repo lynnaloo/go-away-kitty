@@ -3,7 +3,13 @@
 		"Sns": {
 			"Message": {
 				"motion": true,
-				"timestamp": "2016-10-08T02:03:14+00:00"
+				"timestamp": "January 7, 2017 6:59 PM",
+        "imageUrl": "https://s3.amazonaws.com/kitty-detections/cat.jpg",
+        "s3": {
+          "bucket": "kitty-detections",
+          "imageName": "cat.jpg"
+        },
+        "cat": false
 			}
 		}
 	}]

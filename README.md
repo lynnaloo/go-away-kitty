@@ -1,6 +1,7 @@
 # go-away-kitty
 
-> :feet: :crying_cat_face: Serverless architecture for dealing with kitty-detection data
+> :feet: :crying_cat_face: Serverless functions for dealing with kitty detections
+> Kitty sightings with images can now be processed with AWS Rekognition
 
 ## Install
 
@@ -24,7 +25,7 @@ $ npm i
 
 Setup your Account Provider (AWS, Google, Azure, etc)
 
-*   [AWS Lambda](https://serverless.com/framework/docs/providers/aws/setup)
+*   [AWS Lambda](https://serverless.com/framework/docs/providers/aws/guide/credentials/)
 
 Deploy Lambda Functions
 
