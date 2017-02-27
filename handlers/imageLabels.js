@@ -14,6 +14,8 @@ module.exports.imageLabels = (event, context, cb) => {
     imageName: data.imageName
   };
 
+  console.log(`Analyzing file: https://s3.amazonaws.com/${data.bucket}/${data.imageName}`);
+
   return imageAnalysis.getImageLabels(s3Config)
   .then((labels) => {
     const response = {
