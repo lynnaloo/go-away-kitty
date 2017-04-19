@@ -5,16 +5,10 @@ const ImageAnalysis = require('../lib/imageAnalysis');
 const imageAnalysis = new ImageAnalysis();
 
 /**
-    Send a text when a message is sent to the Amazon SNS Topic
+    Send a text when a message is sent to Amazon IoT
  */
 module.exports.sendText = (event, context, cb) => {
-  if (!event.Records) {
-    console.log(`event: ${event}`);
-    return cb(null, 'No SNS message found.');
-  }
-
-  const message = event.Records[0].Sns.Message;
-  console.log(`message from SNS: ${JSON.stringify(message)}`);
+  console.log(`message from IoT: ${JSON.stringify(event)}`);
 
   const textMessage = new TextMessage({
     accountSid: process.env.TWILIO_ACCOUNT_SID,
@@ -24,32 +18,30 @@ module.exports.sendText = (event, context, cb) => {
   });
 
   // if there's an image, check to see if it's a cat
-  if (message.s3) {
-    return imageAnalysis.isCatImage(message.s3)
+  if (event.s3) {
+    console.log('Starting image analysis');
+    return imageAnalysis.isCatImage(event.s3)
     .then((isCat) => {
+
       // if it's not a cat, then don't text
       if (isCat) {
-        message.cat = true;
-        return textMessage.sendMessage(message)
-        .then((message) => {
-          return cb(null, message);
+        event.cat = true;
+        return textMessage.sendMessage(event)
+        .then((response) => {
+          console.log('This is a CAT! Text message sent successfully!');
+          return cb(null, response);
         });
       }
-      return cb(null, message);
+
+      // don't text if it's not a cat, return the message
+      return cb(null, event);
     })
     .catch((err) => {
-      console.log('Error executing Lambda', err);
+      console.log('Error while executing Lambda', err, event);
       return cb(null, err);
     });
-
   }
 
-  return textMessage.sendMessage(message)
-  .then((message) => {
-    return cb(null, message);
-  })
-  .catch((err) => {
-    console.log('Error executing Lambda', err);
-    return cb(null, err);
-  });
+  // no S3 image, just return message
+  return cb(null, event);
 };

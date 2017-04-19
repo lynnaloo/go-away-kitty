@@ -1,10 +1,11 @@
 # go-away-kitty
 
 service: go-away-kitty
+frameworkVersion: ">=1.8.0 <2.0.0"
 
 provider:
   name: aws
-  runtime: nodejs4.3
+  runtime: nodejs6.10
   stage: dev
   region: us-east-1
 
@@ -20,15 +21,9 @@ environment:
   AWS_SNS_TOPIC: ${file(./env.json):AWS_SNS_TOPIC}
 
 functions:
-  hello:
-    handler: handlers/greeting.hello
-    events:
-      - http:
-          path: greet
-          method: get
-
   imageLabels:
     handler: handlers/imageLabels.imageLabels
+    description: HTTP endpoint to get AI labels
     events:
       - http:
           path: labels
@@ -36,9 +31,10 @@ functions:
 
   sendText:
     handler: handlers/textAlert.sendText
+    description: Sends a text when a kitty is spotted
     events:
-      - sns: kitty-detection
-      - displayName: Kitty motion detected
+      - iot:
+          sql: "SELECT * FROM 'kitty-detection'"
     environment:
       TWILIO_AUTH_TOKEN: ${file(./env.json):TWILIO_AUTH_TOKEN}
       TWILIO_ACCOUNT_SID: ${file(./env.json):TWILIO_ACCOUNT_SID}
@@ -47,4 +43,4 @@ functions:
 
   reportKitty:
     handler: handlers/reportKitty.reportKitty
-    # Alexa skill trigger
+    description: Alex skill trigger to report kitty

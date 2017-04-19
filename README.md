@@ -34,6 +34,13 @@ Deploy Lambda Functions
 $ sls deploy -v
 ```
 
+## Lambda Configuration
+
+Set Environment Variables
+
+*   Local development - copy `sample-env.json` to `env.json`
+*   Remote and production development - use AWS CLI or AWS Console to set encrypted values
+
 ## See Also
 
 *   [Serverless Framwork](http://www.serverless.com)

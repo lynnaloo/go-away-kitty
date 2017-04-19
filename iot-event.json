@@ -1,0 +1,9 @@
+{
+  "motion": true,
+  "timestamp": "April 19, 2017 2:17 PM",
+  "imageUrl": "https://s3.amazonaws.com/kitty-detections/cat-1492625833248.jpg",
+  "s3": {
+    "bucket":"kitty-detections",
+    "image":"cat-1492625833248.jpg"
+  }
+}

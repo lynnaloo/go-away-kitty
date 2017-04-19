@@ -1,16 +1,15 @@
 {
-	"Records": [{
+                  "Records": [{
 		"Sns": {
 			"Message": {
-				"motion": true,
-				"timestamp": "January 7, 2017 6:59 PM",
-        "imageUrl": "https://s3.amazonaws.com/kitty-detections/cat.jpg",
-        "s3": {
-          "bucket": "kitty-detections",
-          "imageName": "cat.jpg"
-        },
-        "cat": false
-			}
+	       "motion": true,
+	        "timestamp": "February 27, 2017 11:52 PM",
+	         "imageUrl": "https://s3.amazonaws.com/kitty-detections/cat.jpg",
+	          "s3": {
+		            "bucket": "kitty-detections",
+		              "image": "cat.jpg"
+	          }
+      }
 		}
 	}]
 }

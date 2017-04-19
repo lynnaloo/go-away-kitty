@@ -14,18 +14,21 @@ module.exports.imageLabels = (event, context, cb) => {
     imageName: data.imageName
   };
 
-  console.log(`Analyzing file: https://s3.amazonaws.com/${data.bucket}/${data.imageName}`);
+  console.log(
+    `Analyzing file: https://s3.amazonaws.com/${data.bucket}/${data.imageName}`
+  );
 
-  return imageAnalysis.getImageLabels(s3Config)
-  .then((labels) => {
-    const response = {
-      statusCode: 200,
-      body: JSON.stringify({Labels: labels})
-    };
-    cb(null, response);
-  })
-  .catch((error) => {
-    console.log('Error executing Lambda function:', error);
-    cb(null, error);
-  });
+  return imageAnalysis
+    .getImageLabels(s3Config)
+    .then(labels => {
+      const response = {
+        statusCode: 200,
+        body: JSON.stringify({ Labels: labels })
+      };
+      cb(null, response);
+    })
+    .catch(error => {
+      console.log('Error executing Lambda function:', error);
+      cb(null, error);
+    });
 };

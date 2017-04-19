@@ -1,0 +1,8 @@
+  {
+    "TWILIO_ACCOUNT_SID": "",
+    "TWILIO_AUTH_TOKEN": "",
+    "TO_NUMBER": "+15555555555",
+    "TWILIO_FROM_NUMBER": "+15555555555",
+    "AWS_SNS_TOPIC": "arn:aws:sns:us-east-1:xxxxxxxxxxxx:kitty-detection"
+  }
+
