@@ -1,0 +1,23 @@
+service: go-away-kitty
+
+# Please ensure the serverless-openwhisk provider plugin is installed globally.
+# $ npm install -g serverless-openwhisk
+# ...before installing project dependencies to register this provider.
+# $ npm install
+provider:
+  name: openwhisk
+
+functions:
+  processImage:
+    handler: handler.imageLabels
+    events:
+      - http:
+          path: /analyse/image
+          method: post
+    environment:
+      VISUAL_RECOGNITION_API_KEY: ${file(./env.json):VISUAL_RECOGNITION_API_KEY}
+
+# extend the framework using plugins listed here:
+# https://github.com/serverless/plugins
+plugins:
+  - serverless-openwhisk
