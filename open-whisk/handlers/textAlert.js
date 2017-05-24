@@ -48,4 +48,4 @@ function sendText(params) {
   return event;
 }
 
-module.exports.sentText = sendText;
+module.exports.sendText = sendText;

@@ -14,6 +14,8 @@ functions:
       # - http:
       #     path: /analyze/image
       #     method: post
+  sendText:
+    handler: handlers/textAlert.sendText
 
 # extend the framework using plugins listed here:
 # https://github.com/serverless/plugins
