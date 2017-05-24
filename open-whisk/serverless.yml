@@ -9,13 +9,11 @@ provider:
 
 functions:
   processImage:
-    handler: handler.imageLabels
+    handler: handlers/imageLabels.imageLabels
     events:
-      - http:
-          path: /analyse/image
-          method: post
-    environment:
-      VISUAL_RECOGNITION_API_KEY: ${file(./env.json):VISUAL_RECOGNITION_API_KEY}
+      # - http:
+      #     path: /analyze/image
+      #     method: post
 
 # extend the framework using plugins listed here:
 # https://github.com/serverless/plugins

@@ -37,7 +37,6 @@ module.exports.sendText = (event, context, cb) => {
       return cb(null, event);
     })
     .catch((err) => {
-      console.log('Error while executing Lambda', err, event);
       return cb(null, err);
     });
   }

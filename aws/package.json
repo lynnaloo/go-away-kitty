@@ -1,13 +1,10 @@
 {
-	"name": "go-away-kitty",
+	"name": "go-away-kitty-lambda",
 	"version": "1.0.0",
 	"description": ":feet: :crying_cat_face: Serverless architecture to deal with kitty-detection data",
 	"keywords": [
 		"serverless",
-    "ai",
-    "lambda",
-    "open-whisk",
-		"twillio"
+		"lambda"
 	],
 	"homepage": "https://github.com/lynnaloo/go-away-kitty#readme",
 	"bugs": {
@@ -20,13 +17,14 @@
 		"url": "git+https://github.com/lynnaloo/go-away-kitty.git"
 	},
 	"scripts": {
-		"lint": "eslint . --ext .js"
+		"test": "mocha -c"
 	},
 	"dependencies": {
-		"serverless": "^1.13.2"
+		"aws-sdk": "^2.7.21",
+		"moment-timezone": "^0.5.6",
+		"twilio": "^2.11.0"
 	},
 	"devDependencies": {
-		"eslint": "^3.7.1",
-		"eslint-config-eta": "^0.0.6"
+		"mocha": "^3.2.0"
 	}
 }
