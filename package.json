@@ -22,9 +22,7 @@
 	"scripts": {
 		"lint": "eslint . --ext .js"
 	},
-	"dependencies": {
-		"serverless": "^1.13.2"
-	},
+	"dependencies": {},
 	"devDependencies": {
 		"eslint": "^3.7.1",
 		"eslint-config-eta": "^0.0.6"

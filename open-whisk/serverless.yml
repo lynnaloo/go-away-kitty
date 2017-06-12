@@ -10,12 +10,13 @@ provider:
 functions:
   processImage:
     handler: handlers/imageLabels.imageLabels
-    events:
-      # - http:
-      #     path: /analyze/image
-      #     method: post
+    # events:
+    #   - http: POST /analyze/image
+
   sendText:
     handler: handlers/textAlert.sendText
+    # events:
+    #   - http: POST /detections
 
 # extend the framework using plugins listed here:
 # https://github.com/serverless/plugins

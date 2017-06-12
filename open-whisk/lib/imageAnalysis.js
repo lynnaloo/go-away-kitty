@@ -20,9 +20,8 @@ class ImageAnalysis {
           console.log(err);
           return reject(new Error(err));
         } else {
-          console.log('Analysis complete:');
-          console.log(res);
           const classes = _.get(res, 'images[0].classifiers[0].classes', []);
+          console.log('Analysis:', classes);
           return resolve(classes);
         }
       });
@@ -30,8 +29,10 @@ class ImageAnalysis {
   }
 
   // Check to see if "cat" is included in the labels
-  findCat(labels) {
-    return _.find(classes, ['class', 'cat']);
+  findCat(classes) {
+    const catScore = _.find(classes, ['class', 'cat']);
+    console.log('Cat Score:', catScore ? catScore : 'None');
+    return catScore;
   }
 
   isCatImage(imageParams) {

@@ -4,28 +4,28 @@ const Twilio = require('twilio');
 
 class TextMessage {
   constructor(twilioConfig) {
-    this.client = Twilio(twilioConfig.accountSid, twilioConfig.authToken);
+    this.config = twilioConfig;
     this.toNumber = twilioConfig.toNumber;
     this.twilioNumber = twilioConfig.twilioNumber;
   }
 
   sendMessage(message) {
     const motionData = message || {};
+    const client = Twilio(this.config.accountSid, this.config.authToken);
+
     return new Promise((reject, resolve) => {
-      return this.client.sendMessage({
+      const smsParams = {
         to: this.toNumber,
         from: this.twilioNumber,
-        body: `A kitty was seen at ${motionData.timestamp}`
-      }, (err, responseData) => {
+        body: `A cat was seen at ${motionData.timestamp}`
+      };
+
+      return client.sendMessage(smsParams, (err, responseData) => {
         if (err) {
-          // throw an error
           console.log('This SMS message was not sent due to errors:', err);
           return reject(new Error('This SMS message was not sent due to errors: #{err}'));
         }
-
-        console.log(responseData.from); // outputs from number
-        console.log(responseData.body); // outputs message
-        return resolve(responseData.body);
+        return resolve('The SMS message was sent successfully!');
       });
     });
   }

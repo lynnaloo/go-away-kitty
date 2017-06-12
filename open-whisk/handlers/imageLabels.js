@@ -5,20 +5,15 @@ const ImageAnalysis = require('../lib/imageAnalysis');
 const imageAnalysis = new ImageAnalysis(process.env.VISUAL_RECOGNITION_API_KEY);
 
 function imageLabels(params) {
-  const imageUrl = params.url || 'https://raw.githubusercontent.com/lynnaloo/mowgli.ninja/master/mowgli-1.JPG';
-  console.log(imageUrl);
+  console.log(`Message from IoT: ${JSON.stringify(params)}`);
 
-  const imageParams = {
-    url: imageUrl
-  };
-
-  return imageAnalysis.getImageLabels(imageParams)
+  return imageAnalysis.getImageLabels(params)
   .then((labels) => {
-    return { Analysis: labels}
+    return { Analysis: labels};
   })
   .catch((error) => {
     console.log('Error executing action:', error);
-    return error;
+    return new Error(error);
   });
 }
 
