@@ -13,14 +13,14 @@ class TextMessage {
     const motionData = message || {};
     const client = Twilio(this.config.accountSid, this.config.authToken);
 
-    return new Promise((reject, resolve) => {
+    return new Promise((resolve, reject) => {
       const smsParams = {
         to: this.toNumber,
         from: this.twilioNumber,
-        body: `A cat was seen at ${motionData.timestamp}`
+        body: `A cat was seen at ${motionData.timestamp}. See the cat here: ${motionData.url}`
       };
 
-      return client.sendMessage(smsParams, (err, responseData) => {
+      client.sendMessage(smsParams, (err, responseData) => {
         if (err) {
           console.log('This SMS message was not sent due to errors:', err);
           return reject(new Error('This SMS message was not sent due to errors: #{err}'));

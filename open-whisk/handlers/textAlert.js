@@ -38,11 +38,10 @@ function sendText(params) {
       detection.cat = true;
       return textMessage.sendMessage(detection)
       .then((response) => {
-        console.log('detection:', detection);
-        return { message: detection };
+        return { Detection: detection };
       });
     }
-    return { message: detection };
+    return { Detection: detection };
   })
   .catch((err) => {
     return new Error(err);
