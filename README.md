@@ -2,14 +2,14 @@
 
 > :feet: :crying_cat_face: Serverless functions for dealing with kitty detections.
 
-> Kitty sightings with images can now be processed with AWS Rekognition!
+> Kitty sightings with images can now be processed with AI!
 
 ## Install
 
-With [node](https://nodejs.org/) installed, install the Serverless Architecture:
+With [node](https://nodejs.org/) installed, install the Serverless Architecture (and OpenWhisk Extension):
 
 ```
-$ npm i -g serverless
+$ npm i -g serverless serverless-openwhisk
 ```
 
 Clone this repository
@@ -27,6 +27,7 @@ $ npm i
 Setup your Account Provider (AWS, Google, Azure, etc)
 
 *   [AWS Lambda](https://serverless.com/framework/docs/providers/aws/guide/credentials/)
+*   [OpenWhisk](https://serverless.com/framework/docs/providers/openwhisk/guide/credentials/) 
 
 Deploy Lambda Functions
 
