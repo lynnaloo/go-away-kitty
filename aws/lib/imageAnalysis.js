@@ -15,7 +15,7 @@ class ImageAnalysis {
         }
       },
       MaxLabels: 20,
-      MinConfidence: 50
+      MinConfidence: 60
     };
     return new Promise((resolve, reject) => {
       rek.detectLabels(params, (err, data) => {
