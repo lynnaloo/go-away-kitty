@@ -4,6 +4,8 @@
 
 > Kitty sightings with images can now be processed with AI!
 
+[![Made with Serverless](https://img.shields.io/badge/serverless-⚡-yellow.svg?style=flat-square)](https://serverless.io)
+
 ## Install
 
 With [node](https://nodejs.org/) installed, install the Serverless Architecture (and OpenWhisk Extension):
