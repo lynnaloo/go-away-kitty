@@ -14,8 +14,8 @@ class ImageAnalysis {
           Name: s3Config.image
         }
       },
-      MaxLabels: 20,
-      MinConfidence: 60
+      MaxLabels: 40,
+      MinConfidence: 50
     };
     return new Promise((resolve, reject) => {
       rek.detectLabels(params, (err, data) => {
