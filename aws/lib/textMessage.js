@@ -11,8 +11,8 @@ class TextMessage {
 
   sendMessage(message) {
     const motionData = message || {};
-    return new Promise((reject, resolve) => {
-      return this.client.sendMessage({
+    return new Promise((resolve, reject) => {
+      this.client.sendMessage({
         to: this.toNumber,
         from: this.twilioNumber,
         body: `A kitty was seen at ${motionData.timestamp}`
